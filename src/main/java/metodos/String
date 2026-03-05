@@ -1,0 +1,48 @@
+* String
+
+== Métodos básicos ==
+
+length() → Devuelve la longitud de la cadena.
+charAt(int index) → Devuelve el carácter en la posición indicada.
+concat(String str) → Concatena str al final (equivale a +).
+
+== Búsqueda ==
+
+indexOf(int ch) → Primera aparición del carácter (-1 si no está).
+lastIndexOf(String str) → Última aparición de una cadena.
+
+== Comparación ==
+
+compareTo(String str) → Compara alfabéticamente → 0 iguales, <0 es menor, >0 es mayor.
+equalsIgnoreCase(String s) → Igual que equals pero ignora mayúsculas/minúsculas.
+regionMatches(int i, String s1, int i2, int num) → Compara fragmentos de cadenas.
+
+== Subcadenas ==
+
+substring(int beginIndex) → Desde beginIndex hasta el final (para mas opciones mirar javadocs).
+
+== Reemplazo y formato ==
+
+replace(char oldChar, char newChar) → Reemplaza todas las ocurrencias.
+trim() → Elimina espacios al principio y al final.
+
+== Mayúsculas / minúsculas ==
+
+toLowerCase() → Devuelve la cadena en minúsculas.
+toUpperCase() → Devuelve la cadena en mayúsculas.
+
+== Conversión ==
+
+toCharArray() → Convierte el String en array de char.
+getChars(int i, int f, char[] c, int x) → Copia una subcadena en un array de caracteres.
+valueOf(double d) → Convierte tipos primitivos a String
+
+== Comprobación de inicio y fin ==
+
+startsWith(String s) → Comprueba si empieza por s.
+endsWith(String s) → Comprueba si termina por s.
+
+== Relacinados con arrays ==
+toCharArray() => Convierte el String en un array de caracteres.
+getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin) => Copia parte del String en un array de char.
+split(String regex) => Devuelve un array de String, hay que indicar un separador.

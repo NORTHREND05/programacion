@@ -1,0 +1,24 @@
+* Character
+
+== Métodos de comprobación ==
+
+isDigit(char c) => Devuelve true si el carácter es un dígito (0–9).
+isLetter(char c) => Devuelve true si es una letra.
+isLetterOrDigit(char c) => true si es alfanumérico (letra o número).
+isLowerCase(char c) => true si está en minúscula.
+isUpperCase(char c) => true si está en mayúscula.
+isSpaceBar(char c) => true si es un espacio ' '.
+isWhiteSpace(char c) => true si es espacio, tabulador, salto de línea, etc.
+
+== Métodos de conversión ==
+
+toLowerCase(char c) → Convierte el carácter a minúscula.
+toUpperCase(char c) → Convierte el carácter a mayúscula.
+toString(char c) → Convierte un char en String.
+
+== Métodos numéricos ==
+
+digit(char c, int base) → Convierte un carácter numérico a entero en la base indicada
+                                          → Devuelve -1 si no es válido.
+forDigit(int digito, int base) → Operación inversa a digit.
+

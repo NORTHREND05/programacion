@@ -1,0 +1,25 @@
+* Collections (clase utilitaria)
+
+== Ordenación ==
+sort(List) => Ordena la lista
+
+== Mezcla == 
+shuffle(List) => Baraja aleatoriamente
+
+== Manipulación ==
+reverse(List) => Invierte la lista
+swap(List, i, j) => Intercambia elementos
+copy(dest, src)	=> Copia una lista
+addAll(Collection, e...) => Añade elementos
+fill(List, val) => Rellena con un valor
+
+== Búsqueda ==
+binarySearch(List, key)	=> Búsqueda binaria
+
+== Composición ==
+frequency(Collection, o) => Cuenta ocurrencias
+disjoint(c1, c2) => Comprueba si no comparten
+
+== Extremos ==
+max(Collection)	=> Devuelve el máximo
+min(Collection)	=> Devuelve el mínimo

@@ -1,0 +1,5 @@
+* Iterator
+
+boolean hasNext() => Indica si quedan elementos
+Object next() => Devuelve el siguiente elemento
+void remove() => Elimina el último elemento devuelto

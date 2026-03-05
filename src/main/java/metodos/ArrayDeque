@@ -1,0 +1,30 @@
+* ArrayDeque
+
+== Inserción por ambos extremos ==
+addFirst(E e)	=> Inserta el elemento al inicio del deque
+addLast(E e)	=> Inserta el elemento al final del deque
+offerFirst(E e)	=> Inserta al inicio, devuelve false si falla
+offerLast(E e)	=> Inserta al final, devuelve false si falla
+
+== Eliminación por ambos extremos ==
+removeFirst()	=> Elimina y devuelve el primer elemento
+removeLast()	=> Elimina y devuelve el último elemento
+pollFirst()	=> Elimina el primero o devuelve null
+pollLast()	=> Elimina el último o devuelve null
+
+== Consulta (sin eliminar) ==
+getFirst()	=> Devuelve el primer elemento
+getLast()	=> Devuelve el último elemento
+peekFirst()	=> Devuelve el primero o null
+peekLast()	=> Devuelve el último o null
+
+== Uso como pila (LIFO) — métodos propios de Deque
+push(E e) => Inserta en la cima
+pop() => Extrae el elemento de la cima
+
+== Eliminación por valor (específicos de Deque) ==
+removeFirstOccurrence(Object o)	=> Elimina la primera aparición
+removeLastOccurrence(Object o) => Elimina la última aparición
+
+== Iteración especial ==
+descendingIterator() => Itera del final al inicio

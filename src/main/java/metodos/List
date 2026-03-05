@@ -1,0 +1,24 @@
+* List
+ArrayList / LinkedList / Vector
+== Acceso posicional ==
+Object get(int index) => Devuelve el elemento
+Object set(int index, Object e)	=> Reemplaza el elemento
+void add(int index, Object e) => Inserta en posición
+Object remove(int index) => Elimina por índice
+
+==Inserción masiva ==
+addAll(int index, Collection c) => Inserta una colección
+
+== Búsqueda ==
+int indexOf(Object o) => Primera posición del elemento
+int lastIndexOf(Object o) => Última posición del elemento
+
+== Sublistas ==
+List subList(int from, int to) => Devuelve una sublista
+
+* Stack 
+
+push(E e) => Inserta en la cima
+pop() => Extrae el último
+peek() => Consulta el último
+empty() => Comprueba si está vacío

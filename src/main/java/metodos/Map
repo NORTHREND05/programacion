@@ -1,0 +1,20 @@
+* Map (clave → valor)
+
+== Operaciones básicas ==
+put(Object key, Object value) => Inserta o reemplaza
+get(Object key)	=> Obtiene el valor
+remove(Object key) => Elimina la pareja
+containsKey(Object key)	=> Comprueba clave
+containsValue(Object value) => Comprueba valor
+
+== Información ==
+int size() => Número de parejas
+boolean isEmpty() => Mapa vacío
+
+== Operaciones masivas ==
+putAll(Map m) => añade todas las parejas
+clear()	=> Vacía el mapa
+
+== Vistas ==
+Set keySet() => Devuelve las claves
+Collection values() => Devuelve los valores

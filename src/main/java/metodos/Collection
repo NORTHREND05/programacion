@@ -1,0 +1,20 @@
+* Collection
+
+== Métodos básicos ==
+int size() => Devuelve el número de elementos de la colección
+boolean isEmpty() => Indica si la colección está vacía
+boolean contains(Object o) => Comprueba si existe ese elemento (usa equals)
+boolean add(Object o) => Añade un elemento
+boolean remove(Object o) => Elimina un elemento
+Iterator iterator() => Devuelve un iterador para recorrer la colección
+
+== Operaciones masivas ==
+containsAll(Collection c) => Comprueba si contiene todos los elementos
+addAll(Collection c) => Añade todos los elementos de otra colección
+removeAll(Collection c)	=> Elimina los elementos comunes
+retainAll(Collection c)	=> Mantiene solo los elementos indicados
+clear() => Elimina todos los elementos
+
+== Conversión a array ==
+Object[] toArray() => Devuelve un array con los elementos
+Object[] toArray(Object[] a) => Devuelve un array del tipo indicado

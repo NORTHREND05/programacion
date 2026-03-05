@@ -1,0 +1,10 @@
+* StringBuilder
+
+== Métodos más usados (los del tema) ==
+
+length() → Longitud actual de la cadena.
+capacity() → Capacidad interna del buffer.
+append(X x) → Añade al final (sobrecargado para muchos tipos).
+setCharAt(int index, char ch) → Cambia un carácter en una posición.
+deleteCharAt(int index) → Elimina un carácter.
+toString() → Convierte a String.

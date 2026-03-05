@@ -1,0 +1,12 @@
+* Arrays.
+
+length() => Devuelve el número de elementos del array.
+toString() => Devuelve una cadena con el contenido del array en formato legible.
+fill(array, valor) => Rellena todas las posiciones del array con el valor indicado.
+fill(array, desde, hasta, valor) => Rellena solo un rango concreto del array con el valor indicado.
+equals(array1, array2) => Comprueba si dos arrays son iguales en tamaño y contenido.
+binarySearch(array, valor) => Busca un elemento y devuelve su posición (el array debe estar ordenado).
+binarySearch(array, desde, hasta, valor) => Realiza la búsqueda binaria solo en un rango del array.
+sort(array) => Ordena los elementos del array de forma ascendente.
+copyOf(array, nuevoTamaño) => Copia un array en otro nuevo indicando el número de elementos a copiar.
+copyOfRange(array, desde, hasta) => Copia un rango del array en uno nuevo.
