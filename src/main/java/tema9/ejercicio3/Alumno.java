@@ -3,7 +3,7 @@ package tema9.ejercicio3;
 import tema9.ejercicio1.Cuenta;
 import tema9.ejercicio2.NIF;
 
-public class Alumno {
+public class Alumno implements Comparable<Alumno> {
     // Propiedades
     private int nExpediente;
     private NIF nif;
@@ -93,14 +93,6 @@ public class Alumno {
     }
     
     @Override
-    public boolean equals(Object alumno) {
-        Alumno otro = (Alumno) alumno;
-        
-        // Si el nexpediente o el nif no coinciden devolver false        
-        return (this.getnExpediente() == otro.getnExpediente() && this.getNif().mostrarNIF().equalsIgnoreCase(otro.getNif().mostrarNIF()));
-    }
-    
-    @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
         
@@ -113,4 +105,28 @@ public class Alumno {
         
         return s.toString();
     }
+    
+    @Override
+    public boolean equals(Object alumno) {
+        Alumno otro = (Alumno) alumno;
+        
+        // Si el nexpediente o el nif no coinciden devolver false        
+        return (this.getnExpediente() == otro.getnExpediente() && this.getNif().mostrarNIF().equalsIgnoreCase(otro.getNif().mostrarNIF()));
+    }
+
+    @Override
+    public int compareTo(Alumno o) {
+        int i = this.nombre.compareTo(o.nombre);
+        
+        if(i == 0) {
+            if (this.apellidos.compareTo(o.apellidos) == 0) {
+                return this.nExpediente - o.nExpediente;
+            }
+            return this.apellidos.compareTo(o.apellidos);
+        }
+        
+        return i;
+    }
+    
+   
 }

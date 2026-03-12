@@ -5,10 +5,11 @@ import com.github.javafaker.Faker;
 import tema9.ejercicio1.Cuenta;
 import tema9.ejercicio2.NIF;
 
-public class Curso {
+public class Curso implements Comparable<Curso> {
     // Propiedades
     private HashMap<Integer, Alumno> curso;
     private String nombre;
+    
     // Constructor
     public Curso() {
         nombre = "INDEFINIDO";
@@ -41,20 +42,6 @@ public class Curso {
         this.nombre = nombre;
     }
     
-    // Método que muestra los alumnos en formato tabular
-    @Override
-    public String toString () {
-        StringBuilder sb = new StringBuilder();
-        Alumno a;
-        // Mientras haya alumnos los muestra en formato tabular
-        for (Integer k : curso.keySet()) {
-            a = curso.get(k);
-            sb.append(a.toString()).append("\n");
-        }
-        
-        return sb.toString();
-    }
-    
     public Alumno consulta(int nExpediente) {
         Alumno objetivo = curso.get(nExpediente);
         
@@ -75,4 +62,38 @@ public class Curso {
         
         return false; // No se ha modificado
     }
+    
+    @Override
+    public String toString () {
+        StringBuilder sb = new StringBuilder();
+        Alumno a;
+        // Mientras haya alumnos los muestra en formato tabular
+        for (Integer k : curso.keySet()) {
+            a = curso.get(k);
+            sb.append(a.toString()).append("\n");
+        }
+        
+        return sb.toString();
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        Curso c = (Curso) o;
+        
+        for (int i = 0; i < curso.size(); i++) {
+            if(curso.get(i).getNif().mostrarNIF().compareTo(c.curso.get(i).getNif().mostrarNIF()) != 0) {
+                return false;
+            }
+        }
+        
+        return true;
+        
+    }
+
+    @Override
+    public int compareTo(Curso o) {
+        return this.nombre.compareTo(o.nombre);
+    }
+    
+    
 }

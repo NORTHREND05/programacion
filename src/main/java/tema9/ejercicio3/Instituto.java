@@ -2,7 +2,7 @@ package tema9.ejercicio3;
 
 import java.util.*;
 
-public class Instituto {
+public class Instituto implements Comparable<Instituto>{
     // Propiedades
     private HashSet<Curso> listaCursos;
     
@@ -17,21 +17,6 @@ public class Instituto {
             c.setNombre(nomCurso[i]);
             listaCursos.add(c);
         }
-    }
-    
-    @Override
-    public String toString() {
-        Iterator it = listaCursos.iterator();
-        StringBuilder sb = new StringBuilder();
-        Curso c;
-        
-        while (it.hasNext()) {
-            c = (Curso) it.next();
-            sb.append(c.getNombre()).append("\n");
-            sb.append(c.toString());
-        }
-        
-        return sb.toString();
     }
     
     public String consultaAlumno(int nExp) {
@@ -56,5 +41,31 @@ public class Instituto {
         }
         
         return sb.toString();
+    }
+    
+    @Override
+    public String toString() {
+        Iterator it = listaCursos.iterator();
+        StringBuilder sb = new StringBuilder();
+        Curso c;
+        
+        while (it.hasNext()) {
+            c = (Curso) it.next();
+            sb.append(c.getNombre()).append("\n");
+            sb.append(c.toString());
+        }
+        
+        return sb.toString();
+    }
+    
+    public boolean equals(Object o) {
+        Instituto i = (Instituto) o;
+        
+        return true;
+    }
+
+    @Override
+    public int compareTo(Instituto o) {
+        return 0;
     }
 }
