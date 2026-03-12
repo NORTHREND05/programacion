@@ -2,7 +2,7 @@ package tema9.ejercicio1;
 
 public class Cuenta {
     //Propiedades
-    private long numCuenta;
+    private int numCuenta;
     private float saldo;
     private String nombre;
     private String apellidos;
@@ -27,26 +27,57 @@ public class Cuenta {
         saldo = cantidad;
     }
     
-    public Cuenta(long numCuenta) {
+    public Cuenta(int numCuenta) {
         this.numCuenta = numCuenta;
     }
 
-    //Metodos
-    public void indicarNombre(String n) {
-        nombre = n;
+    // Setters
+    public void setNumCuenta(int numCuenta) {
+        this.numCuenta = numCuenta;
+    }
+    
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void indicarApellido(String a) {
-        apellidos = a;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
-    public void indicarTelefono(int t) {
-        telefono = t;
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+    
+    // Getters
+    public String getSaldo() {
+        String aux;
+        aux = "SALDO DE " + nombre + " " + apellidos + ": " + saldo + "€";
+        return aux;
+    }
+
+    public long getNumCuenta() {
+        return numCuenta;
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+    
+    public String getApellidos() {
+        return apellidos;
+    }
+    
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void enviarBizum(float cantidad) {
+        reintegro(cantidad);
     }
 
     public void ingresar(float cantidad) {
         if (cantidad < 0) {
-            System.out.println("NO ES POSIBLE INGREASR EN NEGATIVO");
+            System.out.println("NO ES POSIBLE INGRESAR EN NEGATIVO");
         } else {
             saldo = saldo + cantidad;
         }
@@ -63,30 +94,12 @@ public class Cuenta {
         }
     }
 
-    public String getSaldo() {
-        String aux;
-        aux = "SALDO DE " + nombre + " " + apellidos + ": " + saldo + "€";
-        return aux;
-    }
-
-    public long getNumCuenta() {
-        return numCuenta;
-    }
-
-    public void setNumCuenta(long numCuenta) {
-        this.numCuenta = numCuenta;
-    }
-
-    public void enviarBizum(float cantidad) {
-        reintegro(cantidad);
-    }
-
-    public void cambiarNombre(String nuevoNombre, String nuevoApellido) {
+    public void cambiarNombre(String nuevoNombre, String nuevoApellidos) {
         if (nombre.equalsIgnoreCase(nuevoNombre)) {
             System.out.println("ERES MUUUUU TONTOOOOO!!!");
         } else {
             nombre = nuevoNombre;
-            apellidos = nuevoApellido;
+            apellidos = nuevoApellidos;
         }
     }
 }

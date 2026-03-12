@@ -92,7 +92,6 @@ public class Alumno {
         this.edad = edad;
     }
     
-    // Método que compara el num de expediente y el nif con letra
     @Override
     public boolean equals(Object alumno) {
         Alumno otro = (Alumno) alumno;
