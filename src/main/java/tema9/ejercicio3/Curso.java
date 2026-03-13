@@ -18,14 +18,17 @@ public class Curso implements Comparable<Curso> {
         Alumno a;
         NIF nif;
         Cuenta cuenta;
+        int n;
         
         // Crea el alumno, añadelo al map de alumnos n veces
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 5; i++) {
             nif = new NIF();
             cuenta = new Cuenta();
             a = new Alumno();
-            
-            a.setnExpediente(i + 1);
+            do {
+                n = (int) (Math.random() * 20);
+            } while (curso.containsKey(n));
+            a.setnExpediente(n);
             a.setNif(nif);
             a.setCuentaCorriente(cuenta);
             a.setNombre(f.name().name());
@@ -45,13 +48,12 @@ public class Curso implements Comparable<Curso> {
     }
     
     public Alumno consulta(int nExpediente) {
-        Alumno objetivo = curso.get(nExpediente);
+        Alumno a = curso.get(nExpediente);
         
-        if(objetivo == null) {
-            System.out.println("No existe un alumno con el expediente " + nExpediente);
-        }
+        // Si el alumno no existe, entonces devuelve null, sino el alumno
+        if(a == null) return null;
         
-        return objetivo;
+        return a;
     }
     
     public boolean modificacion(Alumno alumno, int nExpediente) {

@@ -12,7 +12,7 @@ public class Instituto implements Comparable<Instituto> {
         String[] nomCurso = {"1ºDAW","2ºDAW","1ºDAM","2ºDAM","1ºASIR","2ºASIR","1ºSMR","2ºSMR","1ºGA","2ºGA"};
         Curso c;
         
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 2; i++) {
             c = new Curso();
             c.setNombre(nomCurso[i]);
             listaCursos.add(c);
@@ -20,15 +20,14 @@ public class Instituto implements Comparable<Instituto> {
     }
     
     public String consultaAlumno(int nExp) {
-        StringBuilder sb = new StringBuilder();
-        
+        // Recorre y busca el alumno, si existe devuelve su toString()
         for (Curso c : listaCursos) {
             if (c.consulta(nExp) != null) {
-                sb.append(c.consulta(nExp).toString());
+                return c.consulta(nExp).toString();
             }
         }
         
-        return sb.toString();
+        return "No existe el alumno con número de expediente: "+nExp;
     }
     
     public String listadoCurso(String nombreCurso) {
@@ -36,6 +35,7 @@ public class Instituto implements Comparable<Instituto> {
         
         for (Curso c : listaCursos) {
             if(c.getNombre().equalsIgnoreCase(nombreCurso)) {
+                sb.append(nombreCurso).append("\n");
                 sb.append(c.toString());
             }
         }
@@ -48,7 +48,7 @@ public class Instituto implements Comparable<Instituto> {
         StringBuilder sb = new StringBuilder();
 
         for (Curso c : listaCursos) {
-            sb.append(c.getNombre()).append("\n");
+            sb.append("======").append(c.getNombre()).append("======\n");
             sb.append(c.toString());
         }
 
