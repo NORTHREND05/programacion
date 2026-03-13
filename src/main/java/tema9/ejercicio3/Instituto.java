@@ -2,7 +2,7 @@ package tema9.ejercicio3;
 
 import java.util.*;
 
-public class Instituto implements Comparable<Instituto>{
+public class Instituto implements Comparable<Instituto> {
     // Propiedades
     private HashSet<Curso> listaCursos;
     
@@ -45,27 +45,50 @@ public class Instituto implements Comparable<Instituto>{
     
     @Override
     public String toString() {
-        Iterator it = listaCursos.iterator();
         StringBuilder sb = new StringBuilder();
-        Curso c;
-        
-        while (it.hasNext()) {
-            c = (Curso) it.next();
+
+        for (Curso c : listaCursos) {
             sb.append(c.getNombre()).append("\n");
             sb.append(c.toString());
         }
-        
+
         return sb.toString();
     }
     
-    public boolean equals(Object o) {
-        Instituto i = (Instituto) o;
+    public boolean equals(Object otroInstituto) {
+        Instituto otro = (Instituto) otroInstituto;
+        
+        // Si no tienen el mismo tamaño no son iguales
+        if (this.listaCursos.size() != otro.listaCursos.size()) {
+            return false;
+        }
+        
+        // Si todos los cursos de un instituto están en el otro true, sino false
+        for (Curso c : listaCursos) {
+            if (!otro.listaCursos.contains(c)) {
+                return false;
+            }
+        }
         
         return true;
     }
 
     @Override
     public int compareTo(Instituto o) {
-        return 0;
+        // Comparamos por tamaño
+        int i = this.listaCursos.size() - o.listaCursos.size();
+        
+        // En caso de empate comparamos por cursos
+        if (i == 0) {
+            Iterator<Curso> it1 = this.listaCursos.iterator();
+            Iterator<Curso> it2 = o.listaCursos.iterator();
+            
+            while (it1.hasNext() && it2.hasNext()) {
+                i = it1.next().compareTo(it2.next());
+                // Si no hay empate devuelve i;
+                if(i != 0) return i;
+            }
+        }
+        return i;
     }
 }

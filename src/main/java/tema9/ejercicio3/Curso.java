@@ -24,12 +24,14 @@ public class Curso implements Comparable<Curso> {
             nif = new NIF();
             cuenta = new Cuenta();
             a = new Alumno();
-            a.setnExpediente((int) (Math.random() * 99999999));
+            
+            a.setnExpediente(i + 1);
             a.setNif(nif);
             a.setCuentaCorriente(cuenta);
             a.setNombre(f.name().name());
             a.setApellidos(f.name().lastName() + " " + f.name().lastName());
-            a.setEdad((byte) (Math.random() * 127));
+            a.setEdad((byte) (Math.random() * 100));
+            
             curso.put(a.getnExpediente(), a);
         }
     }
@@ -56,7 +58,7 @@ public class Curso implements Comparable<Curso> {
         Alumno aux = consulta(nExpediente);
         
         if(aux != null) {
-            curso.put(nExpediente, aux);
+            curso.put(nExpediente, alumno);
             return true;
         }
         
@@ -77,23 +79,37 @@ public class Curso implements Comparable<Curso> {
     }
     
     @Override
-    public boolean equals(Object o) {
-        Curso c = (Curso) o;
+    public boolean equals(Object otroCurso) {
+        Curso c = (Curso) otroCurso;
         
-        for (int i = 0; i < curso.size(); i++) {
-            if(curso.get(i).getNif().mostrarNIF().compareTo(c.curso.get(i).getNif().mostrarNIF()) != 0) {
+        // Si el el tamaño de los cursos es diferente no son iguales
+        if(this.curso.size() != c.curso.size()) {
+            return false;
+        }
+        
+        // Recorre todos los alumnos y sino son iguales devuelve false
+        for (Integer nExp : curso.keySet()) {
+            Alumno a1 = curso.get(nExp);
+            Alumno a2 = c.curso.get(nExp);
+            
+            if (a2 == null || !a1.equals(a2)) {
                 return false;
             }
         }
         
         return true;
-        
     }
 
     @Override
     public int compareTo(Curso o) {
-        return this.nombre.compareTo(o.nombre);
+        // Comparamos por tamaño del curso
+        int i = this.curso.size() - o.curso.size();
+        
+        // En caso de empate por nombre del curso
+        if(i == 0) {
+            return this.nombre.compareTo(o.nombre);
+        }
+        
+        return i;
     }
-    
-    
 }
