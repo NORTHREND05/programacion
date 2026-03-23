@@ -1,7 +1,5 @@
 package tema9.ejercicio4;
 
-import java.util.Objects;
-
 public class Coche implements Comparable<Coche>{
     // Propiedades
     private Motor motor;

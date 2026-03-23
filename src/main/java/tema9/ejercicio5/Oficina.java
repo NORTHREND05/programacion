@@ -39,9 +39,62 @@ public class Oficina implements Comparable<Oficina> {
         return true;
     }
     
-//    public TreeSet<Ordenador> getOrdenadoresConMismaRAM(int ram) {
+    public TreeSet<Ordenador> getOrdenadoresConMismaRAM(byte ram) {
+        ComparaOrdenador comparator = new ComparaOrdenador();
+        TreeSet<Ordenador> lista = new TreeSet(comparator);
+        
+        // Recorre la coleccion y añade los ordenadores a una lista ordenada por RAM
+        for (String key : ordenadores.keySet()) {
+            Ordenador o = ordenadores.get(key);
+            lista.add(o);
+        }
+        
+        return lista;
+    }
+    
+    public double getTotalAlmacenamiento() {
+        double total = 0;
+        
+        // Recorremos la coleccion de ordenadores y acumulamos su almacenamiento
+        for (String key : ordenadores.keySet()) {
+            Ordenador o = ordenadores.get(key);
+            
+            total += o.getAlmacenamiento();
+        }
+        
+        return total;
+    }
+    
+    public double getMediaAlmacenamiento() {
+        return getTotalAlmacenamiento() / ordenadores.size();
+    }
+    
+//    public Ordenador getMinRAMOrdenador() {
+//        Ordenador minRAM;
 //        
+//        for (String key : ordenadores.keySet()) {
+//            Ordenador o = ordenadores.get(key);
+//            
+//            if(o.getRam())
+//        }
+//        
+//        return minRAM;
 //    }
+    
+    public int getOrdenadoresConMismaCPU(String cpu) {
+        int ordenadoresConMismaCPU = 0;
+        
+        for (String key : ordenadores.keySet()) {
+            Ordenador o = ordenadores.get(key);
+            
+            // Si la cpu del ordenador coincide con la del parametro aumenta el contador
+            if(o.getCpu().equals(cpu)) {
+                ordenadoresConMismaCPU++;
+            }
+        }
+        
+        return ordenadoresConMismaCPU;
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -49,6 +102,11 @@ public class Oficina implements Comparable<Oficina> {
         
         Oficina o = (Oficina) obj;
         return this.id == o.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return (3234 * id) % 100;
     }
     
     @Override
