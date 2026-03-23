@@ -1,6 +1,6 @@
 package tema9.ejercicio4;
 
-public class Motor {
+public class Motor implements Comparable<Motor>{
     // Propiedades
     private int litrosAceite;
     private int cv;
@@ -27,6 +27,25 @@ public class Motor {
 
     public void setCv(int cv) {
         this.cv = cv;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Motor m = (Motor) obj;
+        
+        return (this.litrosAceite == m.litrosAceite && this.cv == m.cv);
+    }
+    
+    @Override
+    public int compareTo(Motor o) {
+        int x = this.cv - o.cv;
+        
+        // Si no se puede comparar por caballos entonces por litros de aceite
+        if (x == 0) {
+            x = this.litrosAceite - o.litrosAceite;
+        }
+        
+        return x;
     }
     
     @Override

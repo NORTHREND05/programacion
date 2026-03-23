@@ -1,6 +1,6 @@
 package tema9.ejercicio4;
 
-public class Garaje {
+public class Garaje implements Comparable<Garaje>{
     // Propiedades
     private Coche coche;
     private String averia;
@@ -38,6 +38,18 @@ public class Garaje {
         
         // Acumula el coche atendido
         numCochesAtentidos++;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Garaje g = (Garaje) obj;
+        
+        return this.numCochesAtentidos == g.numCochesAtentidos;
+    }
+    
+    @Override
+    public int compareTo(Garaje o) {
+        return this.numCochesAtentidos - o.numCochesAtentidos;
     }
     
     @Override
