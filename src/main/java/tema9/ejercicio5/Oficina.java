@@ -54,13 +54,13 @@ public class Oficina implements Comparable<Oficina> {
     }
     
     // Método que devuelve una lista de ordenadores con la misma ram, ordenados por numSerie
-    public TreeSet<Ordenador> getOrdenadoresConMismaRAM(byte ram) {
+    public TreeSet<Ordenador> getOrdenadoresMismaRAM(byte ram) {
         ComparaOrdenador comparator = new ComparaOrdenador();
         TreeSet<Ordenador> lista = new TreeSet<>(comparator);
-        
+        Ordenador o;
         // Recorre la coleccion y añade los ordenadores con misma ram
         for (String key : ordenadores.keySet()) {
-            Ordenador o = ordenadores.get(key);
+            o = ordenadores.get(key);
             
             if (o.getRam() == ram) {
                 lista.add(o);
@@ -71,13 +71,13 @@ public class Oficina implements Comparable<Oficina> {
     }
     
     // Método que calcula la suma total del almacenamiento de los ordenadores de la oficina
-    public double getTotalAlmacenamiento() {
-        double total = 0;
+    public int getTotalAlmacenamiento() {
+        int total = 0;
+        Ordenador o;
         
         // Recorremos la coleccion de ordenadores y acumulamos su almacenamiento
         for (String key : ordenadores.keySet()) {
-            Ordenador o = ordenadores.get(key);
-            
+            o = ordenadores.get(key);    
             total += o.getAlmacenamiento();
         }
         
@@ -94,29 +94,30 @@ public class Oficina implements Comparable<Oficina> {
     
     // Método que devuelve el ordenador con menor cantidad de RAM.
     public Ordenador getOrdenadorMenosRAM() {
-        Ordenador orMinRAM = null;
+        Ordenador o, menor = null;
         
         for (String key : ordenadores.keySet()) {
-            Ordenador o = ordenadores.get(key);
+            o = ordenadores.get(key);
             
-            // Si orMinRAM es nulo asignale o, sino, si la ram de o es menor a 
-            // la de orMinRAM, guardalo como menor 
-            if (orMinRAM == null) {
-                orMinRAM = o;
-            } else if (o.getRam() < orMinRAM.getRam()) {
-                orMinRAM = o;
+            // Si menor es nulo asignale o, sino, si la ram de o es > a 
+            // la de menor, guardalo como menor 
+            if (menor == null) {
+                menor = o;
+            } else if (o.getRam() < menor.getRam()) {
+                menor = o;
             }
         }
         
-        return orMinRAM;
+        return menor;
     }
     
     // Método que cuenta los ordenadores que tienen una misma CPU
     public int getOrdenadoresMismaCPU(String cpu) {
         int contador = 0;
+        Ordenador o;
         
         for (String key : ordenadores.keySet()) {
-            Ordenador o = ordenadores.get(key);
+            o = ordenadores.get(key);
             
             // Si la cpu del ordenador coincide con la del parametro aumenta el contador
             if(cpu != null && cpu.equals(o.getCpu())) {
@@ -129,8 +130,15 @@ public class Oficina implements Comparable<Oficina> {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) return false;
-        
+        if (this == obj) { // Identicos = Iguales
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if(this.getClass() != obj.getClass()) {
+            return false;
+        }
         Oficina o = (Oficina) obj;
         return this.id == o.id;
     }
@@ -142,14 +150,12 @@ public class Oficina implements Comparable<Oficina> {
     
     @Override
     public int compareTo(Oficina o) {
-        int x = this.nombre.compareTo(o.nombre);
-        
         // Si no se puede por nombre entonces por ubicacion
-        if(x == 0) {
-            x = this.ubicacion.compareTo(o.ubicacion);
+        if(this.nombre.compareTo(o.nombre) == 0) {
+            return this.ubicacion.compareTo(o.ubicacion);
         }
         
-        return x;
+        return this.nombre.compareTo(o.nombre);
     }
 
     @Override

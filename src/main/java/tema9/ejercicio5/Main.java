@@ -2,7 +2,7 @@ package tema9.ejercicio5;
 
 import com.github.javafaker.Faker;
 
-public class Run {
+public class Main {
     // Lista de posibles cpus
     public static final String[] CPUS = {
         "Intel i3",
@@ -35,7 +35,7 @@ public class Run {
 
         System.out.println("Ordenadores con CPU Intel i5: " + oficina.getOrdenadoresMismaCPU("Intel i5"));
 
-        System.out.println("Ordenadores con 8GB RAM: " + oficina.getOrdenadoresConMismaRAM((byte) 8));
+        System.out.println("Ordenadores con 8GB RAM: " + oficina.getOrdenadoresMismaRAM((byte) 8));
     }
 
     private static void rellenarOficina(Oficina o, int cantidad) {
