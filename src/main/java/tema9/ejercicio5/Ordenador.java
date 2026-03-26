@@ -5,7 +5,7 @@ public class Ordenador implements Comparable<Ordenador> {
     private String cpu;
     private byte ram;
     private int almacenamiento;
-
+    
     public Ordenador(String numSerie, byte ram) {
         this.numSerie = numSerie;
         this.ram = ram;
@@ -13,7 +13,7 @@ public class Ordenador implements Comparable<Ordenador> {
 
     @Override
     public String toString() {
-        return "numSerie=" + numSerie + ", cpu=" + cpu + ", ram=" + ram + "\n";
+        return "numSerie=" + numSerie + ", cpu=" + cpu + ", ram=" + ram + ", almacenamiento=" + almacenamiento + "\n";
     }
 
     public String getNumSerie() {

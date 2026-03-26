@@ -13,12 +13,26 @@ public class Oficina implements Comparable<Oficina> {
     // Constructores
     public Oficina () {
         ordenadores = new HashMap<>();
+        id = (int) (Math.random() * 99999999);
     }
-
+    
     public int getId() {
         return id;
     }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    public void setResponsable(String responsable) {
+        this.responsable = responsable;
+    }
     
+    // Método que añade un ordenador a la colección
     public boolean addOrdenador(Ordenador ordenador) {
         // Si el ordenador enviado es nulo entonces no lo añade
         if(ordenador == null) return false;
@@ -30,28 +44,33 @@ public class Oficina implements Comparable<Oficina> {
         return true;
     }
     
+    // Método que elimina un ordenador de la colección
     public boolean removeOrdenador(String numSerie) {
         // Si no existe un ordenador con ese numero de serie entonces no borra
         if (!ordenadores.containsKey(numSerie)) return false;
         
-        // Si existe lo borra
         ordenadores.remove(numSerie);
         return true;
     }
     
+    // Método que devuelve una lista de ordenadores con la misma ram, ordenados por numSerie
     public TreeSet<Ordenador> getOrdenadoresConMismaRAM(byte ram) {
         ComparaOrdenador comparator = new ComparaOrdenador();
-        TreeSet<Ordenador> lista = new TreeSet(comparator);
+        TreeSet<Ordenador> lista = new TreeSet<>(comparator);
         
-        // Recorre la coleccion y añade los ordenadores a una lista ordenada por RAM
+        // Recorre la coleccion y añade los ordenadores con misma ram
         for (String key : ordenadores.keySet()) {
             Ordenador o = ordenadores.get(key);
-            lista.add(o);
+            
+            if (o.getRam() == ram) {
+                lista.add(o);
+            }
         }
         
         return lista;
     }
     
+    // Método que calcula la suma total del almacenamiento de los ordenadores de la oficina
     public double getTotalAlmacenamiento() {
         double total = 0;
         
@@ -65,35 +84,47 @@ public class Oficina implements Comparable<Oficina> {
         return total;
     }
     
+    // Método que calcula la media del almacenamiento de los ordenadores.
     public double getMediaAlmacenamiento() {
+        // Si no hay ordenadores devuelve 0
+        if(ordenadores.isEmpty()) return 0;
+        
         return getTotalAlmacenamiento() / ordenadores.size();
     }
     
-//    public Ordenador getMinRAMOrdenador() {
-//        Ordenador minRAM;
-//        
-//        for (String key : ordenadores.keySet()) {
-//            Ordenador o = ordenadores.get(key);
-//            
-//            if(o.getRam())
-//        }
-//        
-//        return minRAM;
-//    }
+    // Método que devuelve el ordenador con menor cantidad de RAM.
+    public Ordenador getOrdenadorMenosRAM() {
+        Ordenador orMinRAM = null;
+        
+        for (String key : ordenadores.keySet()) {
+            Ordenador o = ordenadores.get(key);
+            
+            // Si orMinRAM es nulo asignale o, sino, si la ram de o es menor a 
+            // la de orMinRAM, guardalo como menor 
+            if (orMinRAM == null) {
+                orMinRAM = o;
+            } else if (o.getRam() < orMinRAM.getRam()) {
+                orMinRAM = o;
+            }
+        }
+        
+        return orMinRAM;
+    }
     
-    public int getOrdenadoresConMismaCPU(String cpu) {
-        int ordenadoresConMismaCPU = 0;
+    // Método que cuenta los ordenadores que tienen una misma CPU
+    public int getOrdenadoresMismaCPU(String cpu) {
+        int contador = 0;
         
         for (String key : ordenadores.keySet()) {
             Ordenador o = ordenadores.get(key);
             
             // Si la cpu del ordenador coincide con la del parametro aumenta el contador
-            if(o.getCpu().equals(cpu)) {
-                ordenadoresConMismaCPU++;
+            if(cpu != null && cpu.equals(o.getCpu())) {
+                contador++;
             }
         }
         
-        return ordenadoresConMismaCPU;
+        return contador;
     }
 
     @Override
@@ -126,6 +157,6 @@ public class Oficina implements Comparable<Oficina> {
         return "Nombre de la oficina: " + nombre + "\n" +
                "Ubicación: " + ubicacion + "\n" +
                "Responsable: " + responsable + "\n" +
-               ordenadores;
+               ordenadores.values().toString();
     }
 }
