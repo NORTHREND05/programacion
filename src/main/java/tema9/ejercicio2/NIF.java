@@ -50,12 +50,9 @@ public class NIF {
     }
     
     // Método que devuelve el NIF con numero de dni y letra correspondiente
-    public String mostrarNIF() {
-        StringBuilder sb = new StringBuilder();
-        
-        sb.append(dni).append("-").append(letra);
-        
-        return sb.toString();
+    @Override
+    public String toString() {
+        return dni + "-" + letra;
     }
     
     // Método que calcula y devuelve la letra correspondiente al dni

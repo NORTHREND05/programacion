@@ -97,7 +97,7 @@ public class Alumno implements Comparable<Alumno> {
         StringBuilder s = new StringBuilder();
         
         s.append("Número de expediente: ").append(getnExpediente()).append("\n");
-        s.append("NIF: ").append(getNif().mostrarNIF()).append("\n");
+        s.append("NIF: ").append(getNif()).append("\n");
         s.append("Cuenta corriente: ").append(getCuentaCorriente().getNumCuenta()).append("\n");
         s.append("Nombre: ").append(getNombre()).append("\n");
         s.append("Apellidos: ").append(getApellidos()).append("\n");
@@ -111,7 +111,7 @@ public class Alumno implements Comparable<Alumno> {
         Alumno otro = (Alumno) otroAlumno;
         
         // Si el nexpediente o el nif no coinciden devolver false        
-        return (this.getnExpediente() == otro.getnExpediente() && this.getNif().mostrarNIF().equalsIgnoreCase(otro.getNif().mostrarNIF()));
+        return (this.getnExpediente() == otro.getnExpediente() && this.getNif().equals(otro.getNif()));
     }
 
     @Override

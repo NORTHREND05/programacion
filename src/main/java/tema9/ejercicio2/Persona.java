@@ -41,8 +41,8 @@ public class Persona {
         return edad;
     }
     
-    public String getNif() {
-        return nif.mostrarNIF();
+    public NIF getNif() {
+        return nif;
     }
 
     // Setters

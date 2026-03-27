@@ -24,7 +24,7 @@ public class Run {
             p = new Persona(f.name().firstName(), f.name().lastName(), f.name().lastName(), edad);
             p.setNif((long) (Math.random() * 99999999));
             
-            personas.put(p.getNif(), p);
+            personas.put(p.getNif().toString(), p);
         }
         
         return personas;
