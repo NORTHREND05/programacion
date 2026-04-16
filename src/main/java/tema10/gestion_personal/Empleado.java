@@ -7,8 +7,29 @@ public abstract class Empleado {
     private String nombreCompleto;
     private NIF nif;
     private byte edad;
-
+    
+    // Constructor
+    public Empleado(String nombreCompleto, NIF nif, byte edad) {
+        this.nombreCompleto = nombreCompleto;
+        this.nif = nif;
+        this.edad = edad;
+    }
+    
+    // Método abstracto
     public abstract float calculaSueldo();
+
+    // Getters
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public NIF getNif() {
+        return nif;
+    }
+
+    public byte getEdad() {
+        return edad;
+    }
     
     @Override
     public String toString() {
