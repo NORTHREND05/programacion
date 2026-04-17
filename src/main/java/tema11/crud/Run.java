@@ -1,4 +1,4 @@
-package tema11.ejercicio1;
+package tema11.crud;
 
 import java.util.ArrayList;
 import tema9.ejercicio3.Alumno;

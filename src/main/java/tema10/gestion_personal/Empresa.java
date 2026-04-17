@@ -28,31 +28,26 @@ public class Empresa {
         EmpleadoTemporal et;
         EmpleadoPorHoras eh;
         EmpleadoFijo ef;
-                
+        
+        // Creación de los 10 empleados de distintos tipos
         for (int i = 0; i < 10; i++) {
             nombreCompleto = f.name().fullName();
-            nif = new NIF(f.number().numberBetween(10000000L, 99999999L));
+            nif = new NIF(f.number().numberBetween(10000000, 99999999));
             edad = (byte) f.number().numberBetween(18, 65);
             
             if (i<3) {
                 fechaAlta = LocalDate.now().minusMonths(f.number().numberBetween(1, 12));
                 fechaBaja = fechaAlta.plusMonths(f.number().numberBetween(1, 12));
                 
-                et = new EmpleadoTemporal(
-                    nombreCompleto, nif, edad, fechaAlta, fechaBaja
-                );
+                et = new EmpleadoTemporal(nombreCompleto, nif, edad, fechaAlta, fechaBaja);
                 empleados.add(et);
             } else if (i < 6) {
-                eh = new EmpleadoPorHoras(
-                    nombreCompleto, nif, edad
-                );
+                eh = new EmpleadoPorHoras(nombreCompleto, nif, edad);
                 eh.setHorasTrabajadas(f.number().numberBetween(80, 320));
                 empleados.add(eh);
             } else {
                 anyoIncorporacion = f.number().numberBetween(2000, 2026);
-                ef = new EmpleadoFijo(
-                    nombreCompleto, nif, edad, anyoIncorporacion
-                );
+                ef = new EmpleadoFijo(nombreCompleto, nif, edad, anyoIncorporacion);
                 empleados.add(ef);
             }
         }
@@ -105,7 +100,6 @@ public class Empresa {
                 et.add((EmpleadoTemporal) empleado);
             }
         }
-        
         return et;
     }
     
@@ -117,7 +111,6 @@ public class Empresa {
                 ef.add((EmpleadoFijo) empleado);
             }
         }
-        
         return ef;
     }
     
@@ -129,7 +122,6 @@ public class Empresa {
                 eh.add((EmpleadoPorHoras) empleado);
             }
         }
-        
         return eh;
     }
 }
