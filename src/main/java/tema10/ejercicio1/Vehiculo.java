@@ -1,6 +1,6 @@
 package tema10.ejercicio1;
 
-public class Vehiculo {
+public class Vehiculo{
     // Propiedades
     private int cv;
     private String tipoMotor;
@@ -15,6 +15,14 @@ public class Vehiculo {
     
     public Vehiculo (String marca) {
         this(marca, -1);
+    }
+
+    public int getCv() {
+        return cv;
+    }
+
+    public String getMarca() {
+        return marca;
     }
     
     // Setters

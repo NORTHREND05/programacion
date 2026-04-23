@@ -1,6 +1,6 @@
 package tema12;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Ejercicio3 {
     public static void main(String[] args) {
@@ -13,10 +13,12 @@ public class Ejercicio3 {
             index = s.nextInt();
             
             System.out.println("El valor en esa posición es: " + v[index]);
+        } catch (InputMismatchException e) {
+            System.out.println("Error: El valor debe ser numérico.");
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Error: El índice está fuera del rango del array.");
         } catch (Exception e) {
-            System.out.println("Error: Ese no es un valor númerico.");
+            System.out.println("En estos momentos no puede realizarse la operación.");
         }
     }
 }

@@ -1,6 +1,6 @@
 package tema12;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Ejercicio2 {
     public static void main(String[] args) {
@@ -15,8 +15,11 @@ public class Ejercicio2 {
                 
                 // Si se completa la accion es válido
                 valido = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Error: El valor debe ser numérico.");
+                s.nextLine();
             } catch (Exception e) {
-                System.out.println("Error: Ese no es un valor númerico");
+                System.out.println("En estos momentos no puede realizarse la operación.");
                 s.nextLine(); // Limpia lo que escribió el usuario
             }
         } while (!valido);
