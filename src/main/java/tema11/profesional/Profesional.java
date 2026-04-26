@@ -7,9 +7,25 @@ public abstract class Profesional implements Comparable<Profesional>{
     private double salario;
 
     // Constructor
-    public Profesional(int id, String nombre, double salario) {
+    public Profesional(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
+    }
+
+    // Getters & Setters
+    public int getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
         this.salario = salario;
     }
     
@@ -18,6 +34,7 @@ public abstract class Profesional implements Comparable<Profesional>{
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
+        if (!(obj instanceof Profesional)) return false;
         
         Profesional p = (Profesional) obj;
         return this.id == p.id;
@@ -25,16 +42,16 @@ public abstract class Profesional implements Comparable<Profesional>{
 
     @Override
     public int hashCode() {
-        return 47 * this.id % 100;
+        return 47 * this.id % 1000;
     }
 
     @Override
     public int compareTo(Profesional o) {
-        return (int) (o.salario - this.salario);
+        return Double.compare(o.salario, this.salario);
     }
 
     @Override
     public String toString() {
-        return "Nombre: " + nombre + " -  Salario: " + salario + "€";
+        return "Nombre: " + nombre + "\tSalario: " + salario + "€";
     }
 }

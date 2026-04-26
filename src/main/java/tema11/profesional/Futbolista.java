@@ -7,10 +7,14 @@ public class Futbolista extends Profesional{
     private String seleccion;
     private String posicion;
 
-    public Futbolista(int id, String nombre, double salario) {
-        super(id, nombre, salario);
+    // Constructor
+    public Futbolista(int id, String nombre, String posicion) {
+        super(id, nombre);
+        this.posicion = posicion;
+        setSalario(calcularSalario());
     }
 
+    // Getters & Setters
     public String getSeleccion() {
         return seleccion;
     }
@@ -25,18 +29,19 @@ public class Futbolista extends Profesional{
 
     public void setPosicion(String posicion) {
         this.posicion = posicion;
+        setSalario(calcularSalario());
     }
 
     @Override
     public double calcularSalario() {
-        double salario;
+        double salario, smi = ParametrosLaborales.getSmi();
         
         if (posicion.equalsIgnoreCase("Delantero")) {
-            salario = ParametrosLaborales.getSmi() * 5;
+            salario = smi * 5;
         } else if (posicion.equalsIgnoreCase("Defensa")) {
-            salario = ParametrosLaborales.getSmi() * 4;
+            salario = smi * 4;
         } else {
-            salario = ParametrosLaborales.getSmi() * 3;
+            salario = smi * 3;
         }
         return salario;
     }
@@ -44,8 +49,7 @@ public class Futbolista extends Profesional{
     @Override
     public String toString() {
         return super.toString() +
-                " - Selección: " + seleccion +
-                " - Posicion: " + posicion +
-                " - Salario: " + calcularSalario() + "€";
+                "\tSelección: " + seleccion +
+                "\tPosicion: " + posicion;
     }
 }
