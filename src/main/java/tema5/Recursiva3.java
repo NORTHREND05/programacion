@@ -10,7 +10,7 @@ public class Recursiva3 {
         
         } else {
             fibonacci(i + 1, n + n2, n);
-            System.out.println(i + n);
+            System.out.println(n + " ");
         }
     }
 }
